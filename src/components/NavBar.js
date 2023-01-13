@@ -21,61 +21,23 @@ const NavBar = () => {
         </Link>
       </Flex>
       {/* Sections and Connect */}
-      <Flex justify="space-around" align="cerightnter" padding="20px 110px">
+      <Flex justify="space-around" className="navbar-option" align="cerightnter" padding="20px 110px">
         <Spacer />
-        <Box
-          color="rgb(144, 33, 33)"
-          fontFamily="Sora"
-          padding="4px"
-          margin="0 35px"
-          cursor="pointer"
-        >
-          <Link to="/">Home</Link>
-        </Box>
-        <Box
-          color="rgb(144, 33, 33)"
-          fontFamily="Sora"
-          padding="4px"
-          margin="0 35px"
-          cursor="pointer"
-        >
-          <Link to="/mint">Mint</Link>
-        </Box>
-        <Box
-          color="rgb(144, 33, 33)"
-          fontFamily="Sora"
-          padding="4px"
-          margin="0 35px"
-          cursor="pointer"
-        >
-          <Link to="/about">Sobre o projeto</Link>
-        </Box>
+        <Link to="/">
+          Home
+        </Link>
+        <Link to="/mint">
+          Mint
+        </Link>
+        <Link to="/about">
+          Sobre o projeto
+        </Link>
         {currentAccount ? (
-          <Box
-            backgroundColor="rgb(144, 33, 33)"
-            borderRadius="8px"
-            boxShadow="0px 1px 1px 1px #0F0F0F"
-            color="white"
-            cursor="pointer"
-            fontFamily="inherit"
-            padding="5px 10px"
-            margin="0 15px"
-          >
+          <Box className="connect-wallet-section">
             {shortenAddress(currentAccount)}
           </Box>
         ) : (
-          <Button
-            backgroundColor="rgb(144, 33, 33)"
-            borderRadius="8px"
-            boxShadow="0px 1px 1px 1px #0F0F0F"
-            color="white"
-            cursor="pointer"
-            fontFamily="sans-serif"
-            fontSize=""
-            padding="5px 10px"
-            margin="0 15px"
-            onClick={connectWallet}
-          >
+          <Button className="connect-wallet-section" onClick={connectWallet}>
             CONECTAR CARTEIRA
           </Button>
         )}

@@ -68,10 +68,11 @@ const Mint = () => {
             <Button className="mint-button" onClick={handleIncrement}>
               +
             </Button>
-            <Button className="mint-button" onClick={handleMint}>
-              Mint now
-            </Button>
           </div>
+
+            <Button marginTop="10px" className="mint-button" onClick={handleMint}>
+              Mintar
+            </Button>
         </div>
       ) : (
         <Link backgroundColor="#D6517D" padding="5px 10px" to="/about">

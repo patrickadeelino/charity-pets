@@ -1,4 +1,23 @@
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar-option a {
+  color: rgb(144, 33, 33);
+  font-family: Sora;
+  padding: 4px;
+  margin: 0 35px;
+  cursor: pointer;
+}
+
+.connect-wallet-section {
+  background-color: rgb(144, 33, 33);
+  border-radius: 8px;
+  box-shadow: 0px 1px 1px 1px #0f0f0f;
+  color: white;
+  cursor: pointer;
+  font-family: sans-serif;
+  padding: 5px 10px;
+  margin: 0 15px;
 }

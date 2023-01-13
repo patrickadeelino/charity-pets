@@ -1,6 +1,6 @@
-import "./../App.css";
+import './Home.css'
+import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
-import { Link } from "@chakra-ui/react";
 
 function Home() {
   return (
@@ -17,7 +17,7 @@ function Home() {
             a ser beneficiada <br /> e ganha uma foto de perfil de um animal de
             estimação. <br />
           </p>
-          <Link cursor="pointer" color="white" padding="5px" backgroundColor="rgb(144, 33, 33)" borderRadius="5px">Entenda como se juntar a nós na causa dos animais...</Link>
+          <Link to="/mint" className="link-to-mint-section">Entenda como se juntar a nós na causa dos animais...</Link>
         </div>
     </div>
   );
