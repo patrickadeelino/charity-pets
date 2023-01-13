@@ -3,7 +3,6 @@
 .App {
   text-align: center;
   font-family: "Open Sans";
-  /* color: rgb(175, 153, 153); */
   color:rgb(144, 33, 33);
   font-size: large;
 }
@@ -37,8 +36,4 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 88%;
-}
-
-.flex-right-sections {
-  color: white;
 }

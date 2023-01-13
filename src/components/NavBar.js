@@ -39,7 +39,7 @@ const NavBar = () => {
           margin="0 35px"
           cursor="pointer"
         >
-          <Link to="/about">Sobre o projeto</Link>
+          <Link to="/mint">Mint</Link>
         </Box>
         <Box
           color="rgb(144, 33, 33)"
@@ -48,7 +48,7 @@ const NavBar = () => {
           margin="0 35px"
           cursor="pointer"
         >
-          <Link to="/mint">Mint</Link>
+          <Link to="/about">Sobre o projeto</Link>
         </Box>
         {currentAccount ? (
           <Box
