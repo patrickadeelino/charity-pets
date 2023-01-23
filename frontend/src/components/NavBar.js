@@ -1,49 +1,70 @@
-import "./NavBar.css";
-import React, { useContext } from "react";
-import { Box, Button, Flex, Spacer, Image } from "@chakra-ui/react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "./Button";
+import "./NavBar.css";
 import { WalletContext } from "../context/WalletContext";
 import { shortenAddress } from "../utils/shortenAddress";
-import Opensea from "../assets/social-media-icons/opensea.png";
-import Instagram from "../assets/social-media-icons/instagram.png";
-const NavBar = () => {
-  const { currentAccount, connectWallet } = useContext(WalletContext);
 
+function NavBar() {
+  const [click, setClick] = useState(false);
+  const [button, setButton] = useState(true);
+  const handleClick = () => setClick(!click);
+  const closeMobileMenu = () => setClick(false);
+  const { connectWallet, currentAccount } = useContext(WalletContext);
+
+  const showButton = () => {
+    setButton(window.innerWidth > 960);
+  };
+
+  useEffect(() => {
+    showButton();
+  }, []);
+
+  window.addEventListener("resize", showButton);
   return (
-    <Flex justify="space-between" align="center" padding="30px 40px">
-      {/* Social Media Icons */}
-      <Flex marginLeft="25%">
-        <Link href="https://opensea.io" target="_blank">
-          <Image src={Opensea} boxSize="32px" margin="0 25px" />
-        </Link>
-        <Link href="https://instagram.com" target="_blank">
-          <Image src={Instagram} boxSize="32px" margin="0 25px" />
-        </Link>
-      </Flex>
-      {/* Sections and Connect */}
-      <Flex justify="space-around" className="navbar-option" align="cerightnter" padding="20px 110px">
-        <Spacer />
-        <Link to="/">
-          Home
-        </Link>
-        <Link to="/mint">
-          Mint
-        </Link>
-        <Link to="/about">
-          Sobre o projeto
-        </Link>
-        {currentAccount ? (
-          <Box className="connect-wallet-section">
-            {shortenAddress(currentAccount)}
-          </Box>
-        ) : (
-          <Button className="connect-wallet-section" onClick={connectWallet}>
-            CONECTAR CARTEIRA
-          </Button>
-        )}
-      </Flex>
-    </Flex>
+    <>
+      <nav className="navbar">
+        <div className="navbar-container">
+          <Link to="/" className="navbar-logo">
+            <p>Charity Pets</p> <i className="fab fa-typo3" />
+          </Link>
+          <div className="menu-icon" onClick={handleClick}>
+            <i className={click ? "fas fa-times" : "fas fa-bars"} />
+          </div>
+          <ul
+            onClick={closeMobileMenu}
+            className={click ? "nav-menu active" : "nav-menu"}
+          >
+            <li className="nav-item">
+              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+                Início
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="about" className="nav-links" onClick={closeMobileMenu}>
+                Sobre o projeto
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/mint" className="nav-links" onClick={closeMobileMenu}>
+                Mint
+              </Link>
+            </li>
+          </ul>
+          {!currentAccount && button && (
+            <Button buttonStyle="btn--outline" onClick={connectWallet}>
+              Conectar
+            </Button>
+          )}
+          {currentAccount && button && (
+            <Button buttonStyle="btn--outline" onClick={connectWallet}>
+              {shortenAddress(currentAccount)}
+            </Button>
+          )}
+        </div>
+      </nav>
+    </>
   );
-};
+}
 
 export default NavBar;

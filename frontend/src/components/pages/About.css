@@ -1,0 +1,111 @@
+h1 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+h3 {
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+
+p {
+  text-align: justify;
+  font-size: 20px;
+  margin: 5px;
+}
+
+.cards__container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.cards__pic-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 50%;
+  overflow: hidden;
+}
+
+.faq-link {
+  color: white;
+}
+
+.cards__item__img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.cards__wrapper {
+  position: absolute;
+}
+
+.cards__items {
+  margin-bottom: 24px;
+}
+
+.cards__item__img {
+  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+}
+
+.call_to_action {
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.call_to_action a {
+  color: black;
+  border: 1px solid white;
+  background-color: rgb(244, 244, 244);
+  border-radius: 5px;
+  padding: 15px 50px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.call_to_action a:hover {
+  background: rgb(223, 216, 216);
+  color: #242424;
+  transition: all 0.3s ease-out;
+}
+
+ul.cards__info {
+  color: rgb(223, 216, 216);
+}
+
+ul.cards__info > li {
+  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+  padding: 20px 30px 30px;
+}
+
+ul.cards__info > li:nth-child(odd) {
+  background: black;
+}
+
+@media only screen and (min-width: 1200px) {
+  .content__blog__container {
+    width: 84%;
+  }
+  .cards__item__img {
+    padding: 80px 200px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .cards__items {
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .cards__item {
+    margin-bottom: 2rem;
+  }
+}

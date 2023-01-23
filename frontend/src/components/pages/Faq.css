@@ -1,0 +1,11 @@
+h1 {
+    text-align: center;
+    padding-top: 20px;
+}
+.faq-items div {
+  padding: 20px;
+}
+
+.faq-question {
+  text-decoration: underline;
+}

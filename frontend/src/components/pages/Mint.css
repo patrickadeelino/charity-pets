@@ -1,0 +1,66 @@
+.page-wrapper {
+  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+  width: 100%;
+}
+
+.images-wrapper {
+  display: flex;
+  align-items: stretch;
+  overflow-x: hidden;
+}
+
+.header-image {
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+}
+
+.mint-section {
+  padding-bottom: 100px;
+}
+
+.mint-button-wrapper {
+  display: flex;
+  /* border: 1px solid #ff8899; */
+  justify-content: center;
+  align-items: center;
+}
+
+.mint-info-title {
+  text-align: center;
+  padding: 20px;
+  font-size: 30px;
+  color: white;
+}
+
+.total-mint-counter {
+  text-align: center;
+  padding-bottom: 10px;
+  font-size: 15px;
+  color: white;
+}
+
+.mint-section button {
+  background-color: transparent;
+  color: #fff;
+  padding: 8px 20px;
+  margin: 0px 5px;
+  border: 1px solid var(--primary);
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+}
+
+.mint-amount-input {
+  text-align: center;
+  width: 150px;
+  height: 38px;
+}
+
+@media only screen and (min-width: 1200px) {
+  .images-wrapper {
+    padding: 80px 200px 10px 200px;
+  }
+}

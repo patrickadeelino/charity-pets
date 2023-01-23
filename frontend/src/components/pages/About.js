@@ -1,0 +1,95 @@
+import React from "react";
+import "../../App.css";
+import "./About.css";
+import Footer from "../Footer";
+import { Link } from "react-router-dom";
+
+function Home() {
+  return (
+    <>
+      <div id="about" className="cards">
+        <div>
+          <figure className="cards__pic-wrap">
+            <img
+              className="cards__item__img"
+              src="images/about.jpg"
+              alt="Travel"
+            />
+          </figure>
+
+          <ul className="cards__info">
+            <li className="cards__item__info">
+              <h1>SOBRE O PROJETO</h1>
+              <p>
+                Antes de mais nada, parabéns pela sua iniciativa! Infelizmente,
+                o abandono de animais é um problema comum no Brasil.
+              </p>
+              <p>
+                Cerca de 7,2 milhões são abandonados anualmente no país, sejam
+                cães, gatos ou outros animais de estimação.{" "}
+              </p>
+              <p>
+                ONGs de proteção animal trabalham diariamente para proporcionar
+                condições melhores a eles, oferecendo serviços de resgate,
+                encaminhamento e adoção, bem como campanhas de conscientização e
+                esterilização/castração gratuita. Adquirindo o seu colecionável,
+                você tem a chance de incentivar o trabalho de ONGs tão
+                comprometidas.
+              </p>
+              <p></p>
+            </li>
+            <li className="cards__item__info">
+              <h3>COMO VAI FUNCIONAR?</h3>
+              <p>
+                No dia XXXXXX, após o fim do período de Mint, será feito um
+                sorteio on-chain entre os participantes e o dono da carteira que
+                detém o colecionável sorteado escolherá para qual Instituição o
+                valor captado será convertido (para dúvidas, veja a{" "}
+                {
+                  <Link className="faq-link" to="/faq">
+                    FAQ
+                  </Link>
+                }
+                ).
+              </p>
+              <p>
+                A cada colecionável digital que você adquirir, 100% do valor
+                obtido será destinado para a ONG de proteção animal escolhida!
+              </p>
+              <p>
+                Ou seja, quanto mais colecionáveis você possuir, maiores são as
+                chances de você escolher qual instituição vamos ajudar! Após
+                obter o seu colecionável, acesse a página [FORMS DO GOOGLE] para
+                indicar qual a instituição de sua preferência.
+              </p>
+            </li>
+            <li className="cards_item_info">
+              <h3>FUI SORTEADO, E AGORA?</h3>
+              <p>
+                Entraremos em contato através dos dados preenchidos no
+                formulário XXXX para confirmar a ONG escolhida e, depois,
+                compartilharemos aqui [LINK ATUAL] a comprovação da entrega.
+              </p>
+              <p>
+                A cada colecionável digital que você adquirir, 100% do valor
+                obtido será destinado para a ONG de proteção animal escolhida!
+              </p>
+              <p>
+                Ou seja, quanto mais colecionáveis você possuir, maiores são as
+                chances de você escolher qual instituição vamos ajudar! Após
+                obter o seu colecionável, acesse a página [FORMS DO GOOGLE] para
+                indicar qual a instituição de sua preferência.
+              </p>
+              <div className="call_to_action">
+                <Link to="/mint">GARANTIR MEU COLECIONÁVEL!</Link>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
+}
+
+export default Home;

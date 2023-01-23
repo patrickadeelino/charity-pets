@@ -1,5 +1,5 @@
 const { network, ethers } = require("hardhat");
-const { networkConfig } = require("../helper-hardhat-config");
+const { developmentChains } = require("../helper-hardhat-config");
 const {
   storeImages,
   storeTokenUriMetadata,
@@ -21,7 +21,6 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     tokenUris = await uploadToPinata();
   }
 
-  console.log('Tokensuris', tokenUris);
   const args = [tokenUris];
   const { deployer } = await getNamedAccounts();
   const charityPets = await deploy("CharityPets", {
@@ -32,9 +31,10 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   });
 
   log("Deployed to:", charityPets.address);
-
-  log("Verifying on etherscan...");
-  await verify(charityPets.address, args);
+  if (!developmentChains.includes(network.name)) {
+    log("Verifying on etherscan...");
+    await verify(charityPets.address, args);
+  }
 };
 
 async function uploadToPinata() {
@@ -52,7 +52,7 @@ async function uploadToPinata() {
       ".png",
       ""
     );
-    tokenUriMetadata.description = "An adorable " + tokenUriMetadata.name;
+    tokenUriMetadata.description = `An adorable Charity Pet (${tokenUriMetadata.name})`;
     tokenUriMetadata.image = `ipfs://${imageUploadedResponses[imageUploadedResponseIndex].IpfsHash}`;
     const metadataUploadResponse = await storeTokenUriMetadata(
       tokenUriMetadata
@@ -64,4 +64,5 @@ async function uploadToPinata() {
   console.log(`All metadata files were uplodaded. They are: ${tokenUris}`);
   return tokenUris;
 }
+
 module.exports.tags = ["all"];
