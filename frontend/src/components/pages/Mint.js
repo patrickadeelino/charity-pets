@@ -1,31 +1,24 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button } from "../Button";
 import Footer from "../Footer";
 import "./Mint.css";
-import { ethers, BigNumber } from "ethers";
+import { BigNumber } from "ethers";
 import { WalletContext } from "../../context/WalletContext";
 import { TailSpin } from "react-loader-spinner";
 
 const Mint = () => {
   const [mintAmount, setMintAmount] = useState(1);
-  const { currentAccount, connectWallet, connectedContract } =
-    useContext(WalletContext);
   const [isLoading, setIsLoading] = useState(false);
-  const [currentSupply, setCurrentSupply] = useState(0);
-  const [maxSupply, setMaxSupply] = useState(0);
-  const [mintFee, setMintFee] = useState(0);
-
-  useEffect(() => {
-    if (!connectedContract) {
-      return;
-    }
-
-    (async () => {
-      setCurrentSupply(await connectedContract.totalSupply());
-      setMaxSupply(await connectedContract.MAX_SUPPLY());
-      setMintFee(await connectedContract.MINT_FEE());
-    })();
-  }, [connectedContract]);
+  const [mintedSucessfully, setMintedSuccessfully] = useState(false);
+  const {
+    currentAccount,
+    connectWallet,
+    connectedContract,
+    mintFee,
+    currentSupply,
+    setCurrentSupply,
+    maxSupply,
+  } = useContext(WalletContext);
 
   const handleMint = async () => {
     if (!connectedContract) {
@@ -43,9 +36,11 @@ const Mint = () => {
       setIsLoading(true);
       await response.wait();
       setIsLoading(false);
-      console.log("response", response);
+      setCurrentSupply(currentSupply.add(mintAmount));
+      setMintedSuccessfully(true)
     } catch (e) {
       console.log(e);
+      setIsLoading(false);
     }
   };
 
@@ -82,7 +77,7 @@ const Mint = () => {
 
           {currentAccount && (
             <>
-              <p className="total-mint-counter">{`Já foram mintandos ${currentSupply} colecionáveis dos ${maxSupply} disponíveis.`}</p>
+              <p className="mint-section-info">{`Já foram mintandos ${currentSupply} colecionáveis dos ${maxSupply} disponíveis.`}</p>
               <div className="mint-button-wrapper">
                 {isLoading ? (
                   <TailSpin
@@ -102,9 +97,32 @@ const Mint = () => {
                     ></input>
                     <button onClick={handleIncrement}>+</button>
                     <button onClick={handleMint}>Mintar</button>
+                    <div></div>
                   </>
                 )}
               </div>
+
+              {mintedSucessfully &&
+                <div className="mint-success-section">
+                <p className="mint-section-info">
+                  Pronto, seu colecionável já está em sua carteira!
+                </p>
+                <p className="mint-section-info">
+                  <a
+                    className="mint-section-info"
+                    href="https://testnets.opensea.io/account?search[resultModel]=ASSETS&search[sortBy]=CREATED_DATE&search[sortAscending]=false"
+                    target="_blank"
+                    rel="noreferrer" 
+                  >
+                    Clique aqui para ver no Opensea
+                  </a>
+                </p>
+                <p className="mint-section-opensea-note">
+                  Obs: Pode demorar alguns minutos para ficar disponível no
+                  OpenSea.
+                </p>
+              </div>
+              }
             </>
           )}
           {!currentAccount && (

@@ -13,9 +13,16 @@ module.exports = {
       url: process.env.GOERLI_RPC_URL,
       accounts: [process.env.WALLET_PRIVATE_KEY],
     },
+    mumbai: {
+      url: process.env.MUMBAI_RPC_URL,
+      accounts: [process.env.WALLET_PRIVATE_KEY],
+    },
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY,
+    apiKey: {
+      goerli: process.env.GOERLI_ETHERSCAN_API_KEY,
+      polygonMumbai: process.env.MUMBAI_ETHERSCAN_API_KEY
+    }
   },
   namedAccounts: {
     deployer: {

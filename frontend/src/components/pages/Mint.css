@@ -36,11 +36,20 @@
   color: white;
 }
 
-.total-mint-counter {
+.mint-section-info {
   text-align: center;
-  padding-bottom: 10px;
   font-size: 15px;
   color: white;
+}
+
+.mint-section-opensea-note {
+  text-align: center;
+  font-size: 14px;
+  color: white;
+}
+
+.mint-success-section {
+  margin: 20px;
 }
 
 .mint-section button {

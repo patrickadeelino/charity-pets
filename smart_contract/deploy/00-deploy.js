@@ -1,4 +1,4 @@
-const { network, ethers } = require("hardhat");
+const { network } = require("hardhat");
 const { developmentChains } = require("../helper-hardhat-config");
 const {
   storeImages,
@@ -10,6 +10,9 @@ const metadataTemplate = {
   name: "",
   description: "",
   image: "",
+  attributes: [
+
+  ]
 };
 
 module.exports = async ({ getNamedAccounts, deployments }) => {
@@ -18,7 +21,11 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
 
   let tokenUris = [];
   if (process.env.UPLOAD_TO_PINATA === "true") {
-    tokenUris = await uploadToPinata();
+    const { responses: dogsResponses } = await storeImages("images/dogs");
+    const { responses: catsResponses } = await storeImages("images/cats");
+    let dogsTokenUris = await uploadToPinata(dogsResponses, "Dog");
+    let catsTokenUris = await uploadToPinata(catsResponses, "Cat");
+    tokenUris = dogsTokenUris.concat(catsTokenUris).sort(() => Math.random() - 0.5);
   }
 
   const args = [tokenUris];
@@ -37,23 +44,17 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   }
 };
 
-async function uploadToPinata() {
-  let tokenUris = [];
-  const { responses: imageUploadedResponses, files } = await storeImages(
-    "images/"
-  );
-
+async function uploadToPinata(imageUploadedResponses, type) {
   console.log(`${imageUploadedResponses.length} image was uploaded to Pinata.`);
+  let tokenUris = [];
   for (let imageUploadedResponseIndex in imageUploadedResponses) {
     console.log(`Uploading metadata ${imageUploadedResponseIndex}`);
 
     let tokenUriMetadata = { ...metadataTemplate };
-    tokenUriMetadata.name = files[imageUploadedResponseIndex].replace(
-      ".png",
-      ""
-    );
-    tokenUriMetadata.description = `An adorable Charity Pet (${tokenUriMetadata.name})`;
+    tokenUriMetadata.name = "Charity Pet";
+    tokenUriMetadata.description = `An adorable Charity Pet`;
     tokenUriMetadata.image = `ipfs://${imageUploadedResponses[imageUploadedResponseIndex].IpfsHash}`;
+    tokenUriMetadata.attributes.push({trait_type: "type", value: type})
     const metadataUploadResponse = await storeTokenUriMetadata(
       tokenUriMetadata
     );

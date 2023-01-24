@@ -11,7 +11,7 @@ async function storeImages(imagesPath) {
   const fullImagesPath = path.resolve(imagesPath);
   const files = fs.readdirSync(fullImagesPath);
   let responses = [];
-  for (fileIndex in files.sort(() => Math.random() - 0.5)) {
+  for (fileIndex in files) {
     const readableStreamForFile = fs.createReadStream(
       fullImagesPath + "/" + files[fileIndex]
     );
@@ -30,8 +30,7 @@ async function storeImages(imagesPath) {
       console.log(error);
     }
   }
-
-  return { responses, files };
+  return { responses };
 }
 
 async function storeTokenUriMetadata(metadata) {

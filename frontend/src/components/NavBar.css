@@ -155,4 +155,8 @@
       color: #242424;
       transition: 250ms;
     }
+
+    .nav-menu {
+      justify-content: center;
+    }
   }

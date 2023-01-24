@@ -18,7 +18,6 @@ function WelcomeSection() {
           buttonSize="btn__large"
         >
           <Link to="/about" className="btns">
-            {" "}
             QUERO AJUDAR
           </Link>
         </Button>

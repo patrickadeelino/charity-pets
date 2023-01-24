@@ -8,7 +8,9 @@ const { ethereum } = window;
 export const WalletProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState("");
   const [connectedContract, setConnectContract] = useState(null);
-
+  const [currentSupply, setCurrentSupply] = useState(0);
+  const [maxSupply, setMaxSupply] = useState(0);
+  const [mintFee, setMintFee] = useState(0);
   const checkIfUserHasWallet = async () => {
     if (!ethereum) {
       alert("Please install metamask!");
@@ -47,11 +49,18 @@ export const WalletProvider = ({ children }) => {
       charityPets.abi,
       signer
     );
-    setConnectContract(contract);
+
+    (async () => {
+      setConnectContract(contract);
+      setCurrentSupply(await contract.totalSupply());
+      setMaxSupply(await contract.MAX_SUPPLY());
+      setMintFee(await contract.MINT_FEE());
+    })()
+    
   }, [currentAccount]);
   return (
     <WalletContext.Provider
-      value={{ currentAccount, connectWallet, connectedContract }}
+      value={{ currentAccount, connectWallet, connectedContract, mintFee, currentSupply, setCurrentSupply, maxSupply }}
     >
       {children}
     </WalletContext.Provider>
