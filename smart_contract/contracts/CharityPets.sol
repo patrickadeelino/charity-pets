@@ -52,6 +52,10 @@ contract CharityPets is ERC721URIStorage, Ownable {
         return super.tokenURI(tokenId);
     }
 
+    function setTokenUri(uint256 tokenId, string memory newUri) external onlyOwner {
+        _setTokenURI(tokenId, newUri);
+    }
+    
     function withdraw() external onlyOwner {
         (bool success, ) = msg.sender.call{value: address(this).balance}("");
 

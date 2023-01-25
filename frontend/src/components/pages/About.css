@@ -29,8 +29,9 @@ p {
   overflow: hidden;
 }
 
-.faq-link {
+.link {
   color: white;
+  text-decoration: underline;
 }
 
 .cards__item__img {

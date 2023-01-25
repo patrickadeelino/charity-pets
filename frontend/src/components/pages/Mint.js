@@ -5,6 +5,9 @@ import "./Mint.css";
 import { BigNumber } from "ethers";
 import { WalletContext } from "../../context/WalletContext";
 import { TailSpin } from "react-loader-spinner";
+import { googleFormUrl, openSeaUrl } from "../../utils/externalLinks";
+import GoogleFormLink from "../GoogleFormLink";
+import { Tooltip } from "react-tooltip";
 
 const Mint = () => {
   const [mintAmount, setMintAmount] = useState(1);
@@ -37,7 +40,7 @@ const Mint = () => {
       await response.wait();
       setIsLoading(false);
       setCurrentSupply(currentSupply.add(mintAmount));
-      setMintedSuccessfully(true)
+      setMintedSuccessfully(true);
     } catch (e) {
       console.log(e);
       setIsLoading(false);
@@ -102,27 +105,32 @@ const Mint = () => {
                 )}
               </div>
 
-              {mintedSucessfully &&
+              {mintedSucessfully && (
                 <div className="mint-success-section">
-                <p className="mint-section-info">
-                  Pronto, seu colecionável já está em sua carteira!
-                </p>
-                <p className="mint-section-info">
-                  <a
-                    className="mint-section-info"
-                    href="https://testnets.opensea.io/account?search[resultModel]=ASSETS&search[sortBy]=CREATED_DATE&search[sortAscending]=false"
-                    target="_blank"
-                    rel="noreferrer" 
-                  >
-                    Clique aqui para ver no Opensea
-                  </a>
-                </p>
-                <p className="mint-section-opensea-note">
-                  Obs: Pode demorar alguns minutos para ficar disponível no
-                  OpenSea.
-                </p>
-              </div>
-              }
+                  <p className="mint-section-info">
+                    Pronto, seu colecionável já está em sua carteira! <br />
+                    Próximos passos:
+                  </p>
+                  <p className="mint-section-info">
+                    <a
+                      className="mint-section-info"
+                      href={openSeaUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Veja seu colecionável digital no OpenSea
+                    </a>
+                  </p>
+                  <div>
+                    <p className="mint-section-info">
+                      <GoogleFormLink
+                        description="Preencha o formulário para que possamos entrar em contato"
+                        className="mint-section-info"
+                      />
+                    </p>
+                  </div>
+                </div>
+              )}
             </>
           )}
           {!currentAccount && (

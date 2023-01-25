@@ -1,3 +1,3 @@
-const charityPetsAddress = "0x4e5e6dC3CFf6d80CD971764DEcDeB446ab5e8109";
+const charityPetsAddress = "0xd4761b27D38D6033999b51E4F82A8D701652bB28";
 
 export default charityPetsAddress;
