@@ -5,9 +5,8 @@ import "./Mint.css";
 import { BigNumber } from "ethers";
 import { WalletContext } from "../../context/WalletContext";
 import { TailSpin } from "react-loader-spinner";
-import { googleFormUrl, openSeaUrl } from "../../utils/externalLinks";
+import { openSeaUrl } from "../../utils/externalLinks";
 import GoogleFormLink from "../GoogleFormLink";
-import { Tooltip } from "react-tooltip";
 
 const Mint = () => {
   const [mintAmount, setMintAmount] = useState(1);
@@ -21,12 +20,15 @@ const Mint = () => {
     currentSupply,
     setCurrentSupply,
     maxSupply,
+    setUserWalletOwnsNFT,
+    isConnectedToPolygon,
   } = useContext(WalletContext);
 
   const handleMint = async () => {
     if (!connectedContract) {
       return;
     }
+
     try {
       const options = {
         gasLimit: 1000000,
@@ -41,11 +43,16 @@ const Mint = () => {
       setIsLoading(false);
       setCurrentSupply(currentSupply.add(mintAmount));
       setMintedSuccessfully(true);
+      setUserWalletOwnsNFT(true);
     } catch (e) {
       console.log(e);
       setIsLoading(false);
     }
   };
+  
+  window.ethereum.on('chainChanged', () => {
+    window.location.reload();
+  })
 
   const handleIncrement = () => {
     if (mintAmount === 3) return;
@@ -78,7 +85,7 @@ const Mint = () => {
             Faça o Mint do seu colecionável digital
           </p>
 
-          {currentAccount && (
+          {currentAccount && isConnectedToPolygon && (
             <>
               <p className="mint-section-info">{`Já foram mintandos ${currentSupply} colecionáveis dos ${maxSupply} disponíveis.`}</p>
               <div className="mint-button-wrapper">
@@ -139,6 +146,16 @@ const Mint = () => {
                 <Button onClick={connectWallet} buttonStyle="btn--outline">
                   CONECTAR CARTEIRA
                 </Button>
+              </div>
+            </>
+          )}
+
+          {currentAccount && !isConnectedToPolygon && (
+            <>
+              <div className="mint-button-wrapper">
+                <p className="mint-info-title">
+                  Por favor, conecte-se à rede da Polygon.
+                </p>
               </div>
             </>
           )}

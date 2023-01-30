@@ -12,6 +12,7 @@ export const WalletProvider = ({ children }) => {
   const [maxSupply, setMaxSupply] = useState(0);
   const [mintFee, setMintFee] = useState(0);
   const [userWalletOwnsNFT, setUserWalletOwnsNFT] = useState(false);
+  const [isConnectedToPolygon, setIsConnectedToPolygon] = useState(0);
 
   const checkIfUserHasWallet = async () => {
     if (!ethereum) {
@@ -33,7 +34,7 @@ export const WalletProvider = ({ children }) => {
       setCurrentAccount(accounts[0]);
     }
   };
-  
+
   useEffect(() => {
     checkIfUserHasWallet();
     checkIfWalletIsConnected();
@@ -53,17 +54,35 @@ export const WalletProvider = ({ children }) => {
     );
 
     (async () => {
+      const { chainId } = await provider.getNetwork();
+      setIsConnectedToPolygon(parseInt(process.env.REACT_APP_CHAIN_ID) === chainId);
+      if (!isConnectedToPolygon) {
+        return;
+      }
+
       setConnectContract(contract);
       setCurrentSupply(await contract.totalSupply());
       setMaxSupply(await contract.MAX_SUPPLY());
       setMintFee(await contract.MINT_FEE());
-      setUserWalletOwnsNFT(parseInt(await contract.walletMints(signer.getAddress())) > 0);
-    })()
-    
-  }, [currentAccount]);
+      setUserWalletOwnsNFT(
+        parseInt(await contract.walletMints(signer.getAddress())) > 0
+      );
+    })();
+  }, [currentAccount, isConnectedToPolygon]);
   return (
     <WalletContext.Provider
-      value={{ currentAccount, connectWallet, connectedContract, mintFee, currentSupply, setCurrentSupply, maxSupply, userWalletOwnsNFT }}
+      value={{
+        currentAccount,
+        connectWallet,
+        connectedContract,
+        mintFee,
+        currentSupply,
+        setCurrentSupply,
+        maxSupply,
+        userWalletOwnsNFT,
+        setUserWalletOwnsNFT,
+        isConnectedToPolygon,
+      }}
     >
       {children}
     </WalletContext.Provider>

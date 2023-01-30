@@ -29,9 +29,18 @@ p {
   overflow: hidden;
 }
 
+ul.my-benefits {
+  list-style-type: none;
+  padding: 5px;
+}
+
 .link {
   color: white;
   text-decoration: underline;
+}
+
+i.benefits-observation {
+  font-size: 13px;
 }
 
 .cards__item__img {

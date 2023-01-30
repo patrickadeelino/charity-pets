@@ -1,5 +1,6 @@
 import React from "react";
-import './Faq.css';
+import "./Faq.css";
+import { openSeaUrl } from "../../utils/externalLinks";
 function Faq() {
   return (
     <li className="faq-items">
@@ -20,10 +21,10 @@ function Faq() {
         <p>Será utilizado o XXXXX</p>
       </div>
       <div>
-        <p className="faq-question">3) EM QUAL BLOCKCHAIN ESTÁ O CONTRATO INTELIGENTE?</p>
-        <p>
-          O contrato inteligente está na blockchain da Polygon.
+        <p className="faq-question">
+          3) EM QUAL BLOCKCHAIN ESTÁ O CONTRATO INTELIGENTE?
         </p>
+        <p>O contrato inteligente está na blockchain da Polygon.</p>
       </div>
       <div>
         <p className="faq-question">3) QUEM É O ARTISTA DAS ARTES?</p>
@@ -37,8 +38,13 @@ function Faq() {
           4) QUERIA UM COLECIONÁVEL DO MEU CACHORRO, É POSSÍVEL?
         </p>
         <p>
-          Todas as artes são geradas por Inteligência Artifical (Midjourney)
-          sucedida por cuidadosa curadoria de seleção.
+          A distribuição dos colecionáveis é realizada aleatoriamente.
+          Entretanto, você pode tentar negociar um outro de sua preferência no
+          mercado secundário, através da{" "}
+          <a href={openSeaUrl} target="_blank" rel="noreferrer">
+            OpenSea
+          </a>
+          .
         </p>
       </div>
       <div>

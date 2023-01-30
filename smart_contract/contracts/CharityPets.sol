@@ -14,7 +14,7 @@ contract CharityPets is ERC721URIStorage, Ownable {
     string[] internal tokenUris;
     mapping(address => uint256) public walletMints;
 
-    constructor(string[23] memory petsTokensUris) ERC721("CharityPets", "CP") {
+    constructor(string[50] memory petsTokensUris) ERC721("CharityPets", "CP") {
         tokenUris = petsTokensUris;
         totalSupply = 0;
     }

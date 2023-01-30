@@ -10,9 +10,7 @@ const metadataTemplate = {
   name: "",
   description: "",
   image: "",
-  attributes: [
-
-  ]
+  attributes: [],
 };
 
 module.exports = async ({ getNamedAccounts, deployments }) => {
@@ -20,14 +18,13 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   log("=======================");
 
   let tokenUris = [];
-  if (process.env.UPLOAD_TO_PINATA === "true") {
-    const { responses: dogsResponses } = await storeImages("images/dogs");
-    const { responses: catsResponses } = await storeImages("images/cats");
-    let dogsTokenUris = await uploadToPinata(dogsResponses, "Dog");
-    let catsTokenUris = await uploadToPinata(catsResponses, "Cat");
-    tokenUris = dogsTokenUris.concat(catsTokenUris).sort(() => Math.random() - 0.5);
-  }
-
+  const { responses: dogsResponses } = await storeImages("images/dogs");
+  const { responses: catsResponses } = await storeImages("images/cats");
+  let dogsTokenUris = await uploadToPinata(dogsResponses, "Dog");
+  let catsTokenUris = await uploadToPinata(catsResponses, "Cat");
+  tokenUris = dogsTokenUris
+    .concat(catsTokenUris)
+    .sort(() => Math.random() - 0.5);
   const args = [tokenUris];
   const { deployer } = await getNamedAccounts();
   const charityPets = await deploy("CharityPets", {
@@ -45,7 +42,9 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
 };
 
 async function uploadToPinata(imageUploadedResponses, type) {
-  console.log(`${imageUploadedResponses.length} image was uploaded to Pinata.`);
+  console.log(
+    `${imageUploadedResponses.length} images will be uploaded to Pinata.`
+  );
   let tokenUris = [];
   for (let imageUploadedResponseIndex in imageUploadedResponses) {
     console.log(`Uploading metadata ${imageUploadedResponseIndex}`);
@@ -54,7 +53,7 @@ async function uploadToPinata(imageUploadedResponses, type) {
     tokenUriMetadata.name = "Charity Pet";
     tokenUriMetadata.description = `An adorable Charity Pet`;
     tokenUriMetadata.image = `ipfs://${imageUploadedResponses[imageUploadedResponseIndex].IpfsHash}`;
-    tokenUriMetadata.attributes.push({trait_type: "type", value: type})
+    tokenUriMetadata.attributes = [{ trait_type: "type", value: type }];
     const metadataUploadResponse = await storeTokenUriMetadata(
       tokenUriMetadata
     );
