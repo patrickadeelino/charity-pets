@@ -25,6 +25,8 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   tokenUris = dogsTokenUris
     .concat(catsTokenUris)
     .sort(() => Math.random() - 0.5);
+
+  log("=======================");  
   const args = [tokenUris];
   const { deployer } = await getNamedAccounts();
   const charityPets = await deploy("CharityPets", {

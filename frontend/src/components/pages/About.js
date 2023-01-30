@@ -43,10 +43,11 @@ function Home() {
             <li className="cards__item__info">
               <h3>COMO VAI FUNCIONAR?</h3>
               <p>
-                No dia XXXXXX, após o fim do período de Mint, será feito um
-                sorteio on-chain entre os participantes e o dono da carteira que
-                detém o colecionável sorteado escolherá para qual instituição o
-                valor captado será convertido (para dúvidas, veja a{" "}
+                No dia 17 de Fevereiro, após o fim do período de Mint, será
+                feito um sorteio on-chain entre os participantes e o dono da
+                carteira que detém o colecionável sorteado escolherá para qual
+                instituição o valor captado será convertido (para dúvidas, veja
+                a{" "}
                 {
                   <Link className="link" to="/faq">
                     FAQ
@@ -81,29 +82,43 @@ function Home() {
               </p>
               <ul className="my-benefits">
                 <li>
-                  1. Colecionável Digital para você usar nas suas redes sociais
-                  e fotos de perfil.
+                  <p>
+                    1. Colecionável Digital para você usar nas suas redes
+                    sociais e fotos de perfil.
+                  </p>
                 </li>
                 <li>
-                  2. Bate papo ao vivo de 1 hora para aprender sobre como ganhar
-                  dinheiro e viajar barato com Milhas Aéreas.
+                  <p>
+                    2. Bate papo ao vivo de 1 hora para aprender sobre como
+                    ganhar dinheiro e viajar barato com Milhas Aéreas.
+                  </p>
                 </li>
                 <li>
-                  3. Bate papo ao vivo de 1 hora para aprender sobre vendas e
-                  negociação internacional.
+                  <p>
+                    3. Bate papo ao vivo de 1 hora para aprender sobre vendas e
+                    negociação internacional.
+                  </p>
                 </li>
                 <li>
-                  4. Bate papo ao vivo de 1 hora sobre melhores práticas fiscais
-                  sobre criptoativos.
+                  <p>
+                    4. Bate papo ao vivo de 1 hora sobre melhores práticas
+                    fiscais sobre criptoativos.
+                  </p>
                 </li>
                 <li>
-                  5. Bate papo ao vivo de 1 hora de mentoria sobre programação,
-                  dúvidas, como ingressar na área, etc.
+                  <p>
+                    5. Bate papo ao vivo de 1 hora de mentoria sobre
+                    programação, dúvidas, como ingressar na área, etc.
+                  </p>
                 </li>
               </ul>
               <i>
-                Atenção: Os benefícios poderão ser solicitados pela carteira que possuir o NFT sorteado, não precisa necessariamente ser a carteira que mintou o NFT, isso é, <br />
-                caso o NFT ganhador seja adquirido no mercado secundário, o dono terá o direito de utilizar os benefícios.
+                Atenção: Os benefícios poderão ser solicitados pela carteira que
+                possuir o NFT sorteado, não precisa necessariamente ser a
+                carteira que mintou o NFT, isso é, <br />
+                caso o NFT ganhador seja adquirido no mercado secundário, o dono
+                terá o direito de utilizar os benefícios após a comprovação da
+                propriedade.
               </i>
             </li>
             <li className="cards_item_info">

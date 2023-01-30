@@ -1,4 +1,3 @@
-import charityPetsAddress from "../contract/charityPetsAddress";
 import charityPets from "../contract/CharityPets.json";
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
@@ -48,7 +47,7 @@ export const WalletProvider = ({ children }) => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(
-      charityPetsAddress,
+      process.env.REACT_APP_CONTRACT_ADDRESS,
       charityPets.abi,
       signer
     );

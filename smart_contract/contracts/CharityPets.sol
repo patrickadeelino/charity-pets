@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract CharityPets is ERC721URIStorage, Ownable {
     uint256 public immutable MAX_SUPPLY = 50;
     uint256 public immutable MAX_PER_WALLET = 3;
-    uint256 public immutable MINT_FEE = 0.002 ether;
+    uint256 public immutable MINT_FEE = 2 ether;
 
     uint256 public totalSupply;
     bool public isPublicMintEnabled;

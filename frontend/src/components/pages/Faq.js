@@ -17,17 +17,25 @@ function Faq() {
         </p>
       </div>
       <div>
-        <p className="faq-question">2) POR ONDE SERÁ REALIZADO O SORTEIDO?</p>
-        <p>Será utilizado o XXXXX</p>
-      </div>
-      <div>
         <p className="faq-question">
-          3) EM QUAL BLOCKCHAIN ESTÁ O CONTRATO INTELIGENTE?
+          2) EM QUAL BLOCKCHAIN ESTÁ LOCALIZADO E QUAL O ENDEREÇO DO CONTRATO INTELIGENTE?
         </p>
-        <p>O contrato inteligente está na blockchain da Polygon.</p>
+        <p>O contrato inteligente está na blockchain da Polygon e está seu endereço é <a href="https://polygonscan.com/address/0x4e5e6dC3CFf6d80CD971764DEcDeB446ab5e8109" target="_blank">0x1d4DA17FCe3D373f9A98DBF3F720E9Aef419b67a. (MUDAR ISSO QUANDO FOR PRA MAINNET).</a></p>
       </div>
       <div>
-        <p className="faq-question">3) QUEM É O ARTISTA DAS ARTES?</p>
+        <p className="faq-question">3) QUAL O PADRÃO DO TOKEN?</p>
+        <p>
+          ERC-721
+        </p>
+      </div>
+      <div>
+        <p className="faq-question">4) ONDE ESTÁ ARMAZENADO OS METADADOS?</p>
+        <p>
+          Os metadados estão armazenados no IPFS.
+        </p>
+      </div>
+      <div>
+        <p className="faq-question">5) QUEM É O ARTISTA DAS ARTES?</p>
         <p>
           Todas as artes são geradas por Inteligência Artifical (Midjourney)
           sucedida por cuidadosa curadoria de seleção.
@@ -35,7 +43,7 @@ function Faq() {
       </div>
       <div>
         <p className="faq-question">
-          4) QUERIA UM COLECIONÁVEL DO MEU CACHORRO, É POSSÍVEL?
+          6) QUERIA UM COLECIONÁVEL DO MEU CACHORRO, É POSSÍVEL?
         </p>
         <p>
           A distribuição dos colecionáveis é realizada aleatoriamente.
@@ -49,18 +57,18 @@ function Faq() {
       </div>
       <div>
         <p className="faq-question">
-          5) ATÉ QUANDO POSSO MARCAR MINHAS REUNIÕES?
+          7) ATÉ QUANDO POSSO MARCAR MINHAS REUNIÕES?
         </p>
-        <p>Enquanto você possuir o NFT poderá marcar.</p>
+        <p>Você poderá utilizar os benefícios enquanto você possuir o NFT.</p>
       </div>
       <div>
         <p className="faq-question">
-          6) CASO O GANHADOR NÃO SE IDENTIFIQUE, O QUE ACONTECERÁ COM O VALOR?
+          8) CASO O GANHADOR NÃO SE IDENTIFIQUE, O QUE ACONTECERÁ COM O VALOR?
         </p>
         <p>
           Se por algum motivo não for possível identificar o ganhador, a ONG
           será escolhida pelo time de desenvolvimento do projeto. Os resultados
-          obtidos serão compartilhados online.
+          obtidos serão compartilhados online e disponibilizados aqui no site posteriormente.
         </p>
       </div>
     </li>
