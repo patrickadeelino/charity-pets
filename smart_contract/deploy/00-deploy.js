@@ -15,8 +15,6 @@ const metadataTemplate = {
 
 module.exports = async ({ getNamedAccounts, deployments }) => {
   const { deploy, log } = deployments;
-  log("=======================");
-
   let tokenUris = [];
   const { responses: dogsResponses } = await storeImages("images/dogs");
   const { responses: catsResponses } = await storeImages("images/cats");
@@ -26,16 +24,16 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     .concat(catsTokenUris)
     .sort(() => Math.random() - 0.5);
 
-  log("=======================");  
+  log("=======================");
   const args = [tokenUris];
   const { deployer } = await getNamedAccounts();
   const charityPets = await deploy("CharityPets", {
     from: deployer,
     args: args,
     log: true,
-    waitConfirmations: network.config.blockConfirmations || 5,
+    waitConfirmations: network.config.waitConfirmations || 5,
+    gasPrice: 70000000000,
   });
-
   log("Deployed to:", charityPets.address);
   if (!developmentChains.includes(network.name)) {
     log("Verifying on etherscan...");

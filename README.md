@@ -29,7 +29,7 @@ Em caso de sucesso, será criado um arquivo em artifacts/contracts/CharityPets.s
 Copie e cole esse arquivo dentro do projeto frontend:
 > cp artifacts/contracts/CharityPets.sol/CharityPets.json ../frontend/src/contract/CharityPets.json
 
-Após isso, é necessário dizer para o frontend qual é o endereço do contrato recém criado, para isso, copie o endereço que foi exibido no terminal no processo do deploy, esse endereço normalmente está após o 'deployed to: {address}' e normalmente se parece com isso `0x35F3F61b485b165A3D366161a342BeDb0a5F0511`.
+Após isso, é necessário dizer para o frontend qual é o endereço do contrato recém criado, para isso, copie o endereço que foi exibido no terminal no processo do deploy, esse endereço normalmente está após o 'deployed to: {address}' e se parece com isso `0x35F3F61b485b165A3D366161a342BeDb0a5F0511`.
 Encontrado o endereço, adicione-o na variável ambiente `REACT_APP_CONTRACT_ADDRESS` localizado em `../frontend/.env`.
 
 Agora basta rodar o projeto frontend executando:

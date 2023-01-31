@@ -8,7 +8,7 @@ function Footer() {
       <div className="footer-links">
         <div className="footer-link-wrapper">
           <div className="footer-link-items">
-            <a href="https://www.opensea.io" target="_blank" rel="noreferrer">
+            <a href="https://opensea.io/collection/charitypets" target="_blank" rel="noreferrer">
               Coleção no OpenSea
             </a>
           </div>
@@ -23,6 +23,17 @@ function Footer() {
             <Link to="/terms-of-use">Termos de uso</Link>
           </div>
         </div>
+        <div className="footer-link-wrapper">
+          <div className="footer-link-items">
+            <a
+              href="https://github.com/patrickadeelino/charity-pets"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Repositório GitHub
+            </a>
+          </div>
+        </div>
       </div>
       <section className="social-media">
         <div className="social-media-wrap">
@@ -33,8 +44,7 @@ function Footer() {
             </Link>
           </div>
           <small className="website-rights">Charity Pets © 2023</small>
-          <div className="social-icons">
-          </div>
+          <div className="social-icons"></div>
         </div>
       </section>
     </div>

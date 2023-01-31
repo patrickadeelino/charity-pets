@@ -118,4 +118,14 @@ ul.cards__info > li:nth-child(odd) {
   .cards__item {
     margin-bottom: 2rem;
   }
+
+  .call_to_action a {
+    font-size: 17px;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .call_to_action a {
+    font-size: 12px;
+  }
 }

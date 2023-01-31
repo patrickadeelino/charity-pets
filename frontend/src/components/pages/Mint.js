@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Button } from "../Button";
 import Footer from "../Footer";
 import "./Mint.css";
-import { BigNumber } from "ethers";
+import { ethers } from "ethers";
 import { WalletContext } from "../../context/WalletContext";
 import { TailSpin } from "react-loader-spinner";
 import { openSeaUrl } from "../../utils/externalLinks";
@@ -16,26 +16,26 @@ const Mint = () => {
     currentAccount,
     connectWallet,
     connectedContract,
-    mintFee,
     currentSupply,
     setCurrentSupply,
-    maxSupply,
     setUserWalletOwnsNFT,
     isConnectedToPolygon,
   } = useContext(WalletContext);
 
+  const mintFee = ethers.utils.parseEther("2");
+  const maxSupply = 50;
   const handleMint = async () => {
     if (!connectedContract) {
       return;
     }
-
     try {
       const options = {
         gasLimit: 1000000,
-        value: mintFee * mintAmount,
+        value: mintFee.mul(mintAmount),
       };
+
       const response = await connectedContract.mint(
-        BigNumber.from(mintAmount),
+        mintAmount,
         options
       );
       setIsLoading(true);
@@ -45,7 +45,7 @@ const Mint = () => {
       setMintedSuccessfully(true);
       setUserWalletOwnsNFT(true);
     } catch (e) {
-      console.log(e);
+      console.log('exception', e);
       setIsLoading(false);
     }
   };

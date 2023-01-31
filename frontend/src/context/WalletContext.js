@@ -8,8 +8,6 @@ export const WalletProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState("");
   const [connectedContract, setConnectContract] = useState(null);
   const [currentSupply, setCurrentSupply] = useState(0);
-  const [maxSupply, setMaxSupply] = useState(0);
-  const [mintFee, setMintFee] = useState(0);
   const [userWalletOwnsNFT, setUserWalletOwnsNFT] = useState(false);
   const [isConnectedToPolygon, setIsConnectedToPolygon] = useState(0);
 
@@ -61,8 +59,6 @@ export const WalletProvider = ({ children }) => {
 
       setConnectContract(contract);
       setCurrentSupply(await contract.totalSupply());
-      setMaxSupply(await contract.MAX_SUPPLY());
-      setMintFee(await contract.MINT_FEE());
       setUserWalletOwnsNFT(
         parseInt(await contract.walletMints(signer.getAddress())) > 0
       );
@@ -74,10 +70,8 @@ export const WalletProvider = ({ children }) => {
         currentAccount,
         connectWallet,
         connectedContract,
-        mintFee,
         currentSupply,
         setCurrentSupply,
-        maxSupply,
         userWalletOwnsNFT,
         setUserWalletOwnsNFT,
         isConnectedToPolygon,

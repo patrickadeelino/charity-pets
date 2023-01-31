@@ -4,7 +4,6 @@ require("hardhat-deploy");
 
 const dotenv = require("dotenv");
 dotenv.config();
-
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: "0.8.17",
@@ -25,7 +24,8 @@ module.exports = {
   etherscan: {
     apiKey: {
       goerli: process.env.GOERLI_ETHERSCAN_API_KEY,
-      polygonMumbai: process.env.MUMBAI_ETHERSCAN_API_KEY
+      polygonMumbai: process.env.MUMBAI_ETHERSCAN_API_KEY,
+      polygon: process.env.POLYGON_ETHERSCAN_API_KEY,
     }
   },
   namedAccounts: {

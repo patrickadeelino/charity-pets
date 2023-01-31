@@ -20,7 +20,7 @@ function Faq() {
         <p className="faq-question">
           2) EM QUAL BLOCKCHAIN ESTÁ LOCALIZADO E QUAL O ENDEREÇO DO CONTRATO INTELIGENTE?
         </p>
-        <p>O contrato inteligente está na blockchain da Polygon e está seu endereço é <a href="https://polygonscan.com/address/0x4e5e6dC3CFf6d80CD971764DEcDeB446ab5e8109" target="_blank">0x1d4DA17FCe3D373f9A98DBF3F720E9Aef419b67a. (MUDAR ISSO QUANDO FOR PRA MAINNET).</a></p>
+        <p>O contrato inteligente está na blockchain da Polygon e está seu endereço é <a href="https://polygonscan.com/address/0x5335654dDE01A1bF54F7719F13c6580763891c95" target="_blank">0x5335654dDE01A1bF54F7719F13c6580763891c95.</a></p>
       </div>
       <div>
         <p className="faq-question">3) QUAL O PADRÃO DO TOKEN?</p>
