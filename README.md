@@ -36,5 +36,3 @@ Agora basta rodar o projeto frontend executando:
 > cd ../frontend && npm start
 
 Com isso, você deve ser capaz de executar e interagir com o contrato inteligente armazenado em sua blockchain local.
-
-Se tiver alguma dúvida ou problema, será um prazer lhe ajudar: patrick.adeelino@gmail.com
