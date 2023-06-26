@@ -18,11 +18,16 @@ Saiba mais entrando no site:  https://charity-pets.vercel.app.
 * Aplicação front-end desenvolvido em React contendo toda a explicação do projeto e permite usuários interagirem com o contrato inteligente e mintarem até 3 NFTs por carteira.
 
 ## Rodando o projeto localmente:
+Entre na pasta backend:
+> cd backend
 
-Entre na pasta smart_contract:
-> cd smart_contract
+Instale as depedências:
+> yarn install
 
-Primeiramente, deve fazer implementar o contrato inteligente em uma blockchain local:
+Crie o arquivo de variáveis de ambiente e preencha os valores.
+> cp .env.example .env
+
+Primeiramente, deve fazer o deploy do contrato em uma blockchain local:
 > yarn hardhat node
 
 Em caso de sucesso, será criado um arquivo em artifacts/contracts/CharityPets.sol/CharityPets.json, esse arquivo contém a abi (Application Binary Interface), um mapeamento das funções e parâmetros do contrato inteligente que está armezado como binário na blockchain, o frontend precisa desse arquivo para saber como interagir com o contrato. 
@@ -33,6 +38,10 @@ Após isso, é necessário dizer para o frontend qual é o endereço do contrato
 Encontrado o endereço, adicione-o na variável ambiente `REACT_APP_CONTRACT_ADDRESS` localizado em `../frontend/.env`.
 
 Agora basta rodar o projeto frontend executando:
-> cd ../frontend && npm start
+> cd ../frontend
+> npm install 
+> npm start
+
+Acesse o aplicativo em seu navegador em http://localhost:3000.
 
 Com isso, você deve ser capaz de executar e interagir com o contrato inteligente armazenado em sua blockchain local.

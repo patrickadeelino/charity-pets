@@ -8,18 +8,18 @@ dotenv.config();
 module.exports = {
   solidity: "0.8.17",
   networks: {
-    goerli: {
-      url: process.env.GOERLI_RPC_URL,
-      accounts: [process.env.WALLET_PRIVATE_KEY],
-    },
-    mumbai: {
-      url: process.env.MUMBAI_RPC_URL,
-      accounts: [process.env.WALLET_PRIVATE_KEY],
-    },
-    polygon: {
-      url: process.env.POLYGON_RPC_URL,
-      accounts: [process.env.WALLET_PRIVATE_KEY],
-    }
+    // goerli: {
+    //   url: process.env.GOERLI_RPC_URL,
+    //   accounts: [process.env.WALLET_PRIVATE_KEY],
+    // },
+    // mumbai: {
+    //   url: process.env.MUMBAI_RPC_URL,
+    //   accounts: [process.env.WALLET_PRIVATE_KEY],
+    // },
+    // polygon: {
+    //   url: process.env.POLYGON_RPC_URL,
+    //   accounts: [process.env.WALLET_PRIVATE_KEY],
+    // }
   },
   etherscan: {
     apiKey: {

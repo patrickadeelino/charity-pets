@@ -34,6 +34,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     waitConfirmations: network.config.waitConfirmations || 5,
     gasPrice: 70000000000,
   });
+  
   log("Deployed to:", charityPets.address);
   if (!developmentChains.includes(network.name)) {
     log("Verifying on etherscan...");
